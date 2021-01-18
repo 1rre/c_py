@@ -1,1 +1,8 @@
-C to Python Translator
+= C to Python Translator
+
+== Running
+The translator is currently only accessible through the rebar3 shell. To access this, run `rebar3 shell` in the root directory, and to translate a c program to python run `gen_server:call(translator, {translate, "<C CODE>"}).`.
+
+
+== TODO
+- Finish adding for loops and the rest of the assignment operators

@@ -1,13 +1,15 @@
 -module(c_py_sup).
--behaviour(application).
--export([start/2, get_pid/0, stop/1]).
+-behaviour(supervisor).
+-export([start_link/0, init/1]).
 
-start(_Type, _Args) ->
-  {ok, PID} = gen_server:start_link(c_py_app, [], []),
-  register(translator, PID),
-  {ok, PID}.
+start_link() ->
+  supervisor:start_link(c_py_sup, []).
 
-get_pid() -> whereis(translator).
-
-stop(_State) -> ok.
-
+init(Args) -> 
+  SupFlags = #{strategy => one_for_one, intensity => 1, period => 5},
+  ChildSpecs = [#{id => translator,
+                    start => {gen_server, start_link, [c_py, Args, []]},
+                    restart => permanent,
+                    type => worker,
+                    modules => [c_py]}],
+  {ok, {SupFlags, ChildSpecs}}.
