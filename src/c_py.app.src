@@ -1,0 +1,14 @@
+{application, c_py,
+ [{description, "A C89 to Python translator"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {c_py_sup, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+  {licenses, ["MPL-2.0"]},
+  {links, []}
+ ]}.
