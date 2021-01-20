@@ -1,7 +1,7 @@
 = C to Python Translator
 
 == Running
-The translator is currently only accessible through the [rebar3](erlang/rebar3) shell. To access this, run `rebar3 shell` in the root directory, and to translate a c program to python run `gen_server:call(translator, {translate, "<C CODE>"}).`.
+The translator is currently only accessible through the erlang/rebar3[rebar3] shell. To access this, run `rebar3 shell` in the root directory, and to translate a c program to python run `gen_server:call(translator, {translate, "<C CODE>"}).`.
 
 
 == TODO
